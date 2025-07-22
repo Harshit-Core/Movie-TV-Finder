@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie/TV Show Finder</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 Movie/TV Show Finder</h1>
+    <div class="theme-toggle">
+      <label class="switch">
+        <input type="checkbox" id="themeToggle" />
+        <span class="slider round"></span>
+      </label>
+      <span id="themeLabel">Dark Mode</span>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search a movie or TV show..."/>
+      <button onclick="searchMovies()">Search</button>
+    </div>
+
+    <div id="loader" class="loader" style="display: none;"></div>
+    <div id="results" class="results"></div>
+  </div>
+
+  <!-- Popup for full details -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content" id="popupContent"></div>
+    <span class="close-btn" onclick="closePopup()">×</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
