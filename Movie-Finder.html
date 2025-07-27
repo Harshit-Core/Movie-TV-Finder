@@ -18,8 +18,18 @@
     </div>
 
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search a movie or TV show..."/>
+      <div class="search-input-container">
+        <input type="text" id="searchInput" placeholder="Search a movie or TV show..." onkeypress="handleEnterKey(event)" oninput="toggleClearButton()"/>
+        <button id="clearBtn" class="clear-btn hidden" onclick="clearSearch()">×</button>
+      </div>
       <button onclick="searchMovies()">Search</button>
+    </div>
+
+    <!-- Recent Searches Section -->
+    <div id="recentSearches" class="recent-searches hidden">
+      <h3>Recent Searches:</h3>
+      <div id="recentList" class="recent-list"></div>
+      <button onclick="clearRecentSearches()" class="clear-recent-btn">Clear All</button>
     </div>
 
     <div id="loader" class="loader" style="display: none;"></div>
@@ -28,8 +38,10 @@
 
   <!-- Popup for full details -->
   <div id="popup" class="popup hidden">
-    <div class="popup-content" id="popupContent"></div>
-    <span class="close-btn" onclick="closePopup()">×</span>
+    <div class="popup-content" id="popupContent">
+      <!-- Movie details and buttons will be inserted here by JavaScript -->
+    </div>
+    <button class="close-btn" onclick="closePopup()">×</button>
   </div>
 
   <script src="script.js"></script>
