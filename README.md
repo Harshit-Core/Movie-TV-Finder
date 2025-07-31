@@ -1,33 +1,40 @@
 # Movie/TV Show Finder
 
-A simple and modern web application to search for movies and TV shows by title. Built with HTML, CSS, and JavaScript.
+A modern, responsive web app to search for movies and TV shows using the OMDb API. Features include recent searches, theme toggle, animated transitions, genre badges, star ratings, streaming availability, and social sharing.
 
 ## Features
 
 - 🔍 **Search** for movies and TV shows by name
-- 🌗 **Light/Dark mode** toggle for comfortable viewing
+- 🌗 **Light/Dark mode** toggle
 - ⚡ **Responsive design** for desktop and mobile
 - 📝 **Popup details** for each movie/TV show
-- 🎬 **Loader animation** while fetching results
+- ⭐ **Star rating** display for IMDb scores
+- 🎬 **Genre badges** for quick visual reference
+- 📺 **Streaming availability** (demo)
+- 🕹️ **Animated transitions** for cards and popups
+- 🕑 **Recent searches** with quick access
+- 📤 **Share** movie details to social media
 
 ## How It Works
 
 1. Enter a movie or TV show name in the search bar.
-2. Click the **Search** button.
-3. Browse the results and click on any item for more details in a popup.
+2. Click the **Search** button or press Enter.
+3. Browse results and click any item for more details in a popup.
+4. View genre badges, star ratings, and streaming options.
+5. Share your favorite movies with friends!
 
 ## Technologies Used
 
 - HTML5
-- CSS3
+- CSS3 (with transitions and gradients)
 - JavaScript (Vanilla)
-- [OMDb API](https://www.omdbapi.com/) or similar (API integration required in `script.js`)
+- [OMDb API](https://www.omdbapi.com/)
 
 ## Getting Started
 
 1. Clone or download this repository.
 2. Open `Movie-Finder.html` in your browser.
-3. (Optional) Add your API key and endpoint in `script.js` if required.
+3. (Optional) Add your OMDb API key in `script.js` if required.
 
 ## Project Structure
 
