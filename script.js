@@ -111,6 +111,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
 let currentMovieData = null; // Store current movie data for sharing
 
+// Add this helper function for star rating
+function getStarRating(rating) {
+  const stars = Math.round(Number(rating) / 2); // IMDb is out of 10, show out of 5
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    html += i <= stars ? '★' : '☆';
+  }
+  return `<span style="color: gold; font-size: 1.2em;">${html}</span>`;
+}
+
+// Dummy streaming data (replace with real API if available)
+function getStreamingAvailability(title) {
+  // Example: hardcoded for demo, you can integrate with real APIs
+  const services = [
+    { name: "Netflix", url: "https://www.netflix.com/", color: "#e50914" },
+    { name: "Amazon Prime", url: "https://www.primevideo.com/", color: "#00a8e1" },
+    { name: "Disney+", url: "https://www.disneyplus.com/", color: "#113ccf" }
+  ];
+  // Randomly pick one or two for demo
+  const available = services.filter(() => Math.random() > 0.5);
+  if (available.length === 0) return "<span style='color:#888;'>Not available for streaming</span>";
+  return available.map(s =>
+    `<a href="${s.url}" target="_blank" style="background:${s.color};color:white;padding:4px 10px;border-radius:12px;margin-right:6px;text-decoration:none;font-size:0.95em;">${s.name}</a>`
+  ).join('');
+}
+
+// Update fetchDetails to show star rating and streaming info
 async function fetchDetails(id) {
   const url = `https://www.omdbapi.com/?i=${id}&apikey=${apiKey}`;
 
@@ -122,6 +149,9 @@ async function fetchDetails(id) {
     const popup = document.getElementById('popup');
     const content = document.getElementById('popupContent');
 
+    // Example for popup details:
+    const genres = data.Genre.split(',').map(g => `<span class="genre-badge">${g.trim()}</span>`).join('');
+    // Then in your HTML:
     content.innerHTML = `
       <h2>${data.Title}</h2>
       <div style="display: flex; gap: 15px; margin-bottom: 15px;">
@@ -134,12 +164,11 @@ async function fetchDetails(id) {
           <p><strong>Genre:</strong> ${data.Genre}</p>
           <p><strong>Director:</strong> ${data.Director}</p>
           <p><strong>Actors:</strong> ${data.Actors}</p>
-          <p><strong>IMDB Rating:</strong> ${data.imdbRating} ⭐</p>
+          <p><strong>IMDB Rating:</strong> ${data.imdbRating} ${getStarRating(data.imdbRating)}</p>
+          <p><strong>Streaming:</strong> ${getStreamingAvailability(data.Title)}</p>
         </div>
       </div>
       <p><strong>Plot:</strong> ${data.Plot}</p>
-      
-      <!-- Only Share button now -->
       <div class="popup-actions">
         <button class="share-btn" onclick="shareMovie()">📤 Share</button>
       </div>
